@@ -209,6 +209,7 @@ if ($domains_processed == 1) {
 		$array[$x]['default_setting_name'] = 'boolean';
 		$array[$x]['default_setting_value'] = 'true';
 		$array[$x]['default_setting_enabled'] = 'false';
+		$background_image_enabled = false;
 		if ($background_image_enabled) { $array[$x]['default_setting_enabled'] = 'true'; }
 		$array[$x]['default_setting_description'] = 'Enable use of background images.';
 		$x++;

@@ -905,6 +905,11 @@ function format_string ($format, $data) {
 				$bname = 'Netscape';
 				$ub = "Netscape";
 			}
+			else 
+			{
+				$bname = 'Mozilla Firefox';
+				$ub = "Firefox";
+			}
 
 		//finally get the correct version number
 			$known = array('Version', $ub, 'other');
@@ -915,7 +920,7 @@ function format_string ($format, $data) {
 
 		// see how many we have
 			$i = count($matches['browser']);
-			if ($i != 1) {
+			if ($i > 1) {
 				//we will have two since we are not using 'other' argument yet
 				//see if version is before or after the name
 				if (strripos($u_agent,"Version") < strripos($u_agent,$ub)){
@@ -925,7 +930,7 @@ function format_string ($format, $data) {
 					$version= $matches['version'][1];
 				}
 			}
-			else {
+			else if($i == 1) {
 				$version= $matches['version'][0];
 			}
 

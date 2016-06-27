@@ -33,14 +33,18 @@
 <link rel="stylesheet" type="text/css" href="<!--{project_path}-->/resources/bootstrap/css/bootstrap-colorpicker.min.css">
 <link rel="stylesheet" type="text/css" href="<!--{project_path}-->/themes/<?php echo $_SESSION['domain']['template']['name']; ?>/css.php<?php echo ($default_login) ? '?login=default' : null; ?>">
 <?php
-//load custom css
-	if ($_SESSION['theme']['custom_css']['text'] != '') {
-		echo "<link rel='stylesheet' type='text/css' href='".$_SESSION['theme']['custom_css']['text']."'>\n\n";
-	}
+try {
+	//load custom css
+// 	if ($_SESSION['theme']['custom_css']['text'] != '') {
+// 		echo "<link rel='stylesheet' type='text/css' href='".$_SESSION['theme']['custom_css']['text']."'>\n\n";
+// 	}
+	
+// 	//set fav icon
+// 	$favicon = (isset($_SESSION['theme']['favicon']['text'])) ? $_SESSION['theme']['favicon']['text'] : '<!--{project_path}-->/themes/default/favicon.ico';
+// 	echo "<link rel='icon' href='".$favicon."'>\n";
+} catch (Exception $e) {
+}
 
-//set fav icon
-	$favicon = (isset($_SESSION['theme']['favicon']['text'])) ? $_SESSION['theme']['favicon']['text'] : '<!--{project_path}-->/themes/default/favicon.ico';
-	echo "<link rel='icon' href='".$favicon."'>\n";
 ?>
 
 <title><!--{title}--></title>
