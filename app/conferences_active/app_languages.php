@@ -490,4 +490,54 @@ $text['button-start-rec']['sv-se'] = "Starta Inspelning";
 $text['button-start-rec']['uk'] = "Записувати";
 $text['button-start-rec']['de-at'] = "Starte Aufnahme";
 
+$text['button-invite-user-title']['en-us'] = "Invite an internal extension";
+$text['button-invite-user-title']['es-cl'] = "Invite an internal extension";
+$text['button-invite-user-title']['pt-pt'] = "Invite an internal extension";
+$text['button-invite-user-title']['fr-fr'] = "Invite an internal extension";
+$text['button-invite-user-title']['pt-br'] = "Invite an internal extension";
+$text['button-invite-user-title']['pl'] = "Invite an internal extension";
+$text['button-invite-user-title']['sv-se'] = "Invite an internal extension";
+$text['button-invite-user-title']['uk'] = "Invite an internal extension";
+$text['button-invite-user-title']['de-at'] = "Invite an internal extension";
+
+$text['button-invite-user']['en-us'] = "Invite extension";
+$text['button-invite-user']['es-cl'] = "Invite extension";
+$text['button-invite-user']['pt-pt'] = "Invite extension";
+$text['button-invite-user']['fr-fr'] = "Invite extension";
+$text['button-invite-user']['pt-br'] = "Invite extension";
+$text['button-invite-user']['pl'] = "Invite extension";
+$text['button-invite-user']['sv-se'] = "Invite extension";
+$text['button-invite-user']['uk'] = "Invite extension";
+$text['button-invite-user']['de-at'] = "Invite extension";
+
+$text['button-invite-user']['en-us'] = "Invite";
+$text['button-invite-user']['es-cl'] = "Invite";
+$text['button-invite-user']['pt-pt'] = "Invite";
+$text['button-invite-user']['fr-fr'] = "Invite";
+$text['button-invite-user']['pt-br'] = "Invite";
+$text['button-invite-user']['pl'] = "Invite";
+$text['button-invite-user']['sv-se'] = "Invite";
+$text['button-invite-user']['uk'] = "Invite";
+$text['button-invite-user']['de-at'] = "Invite";
+
+
+$text['button-invite-user-extension']['en-us'] = "Extension";
+$text['button-invite-user-extension']['es-cl'] = "Extension";
+$text['button-invite-user-extension']['pt-pt'] = "Extension";
+$text['button-invite-user-extension']['fr-fr'] = "Extension";
+$text['button-invite-user-extension']['pt-br'] = "Extension";
+$text['button-invite-user-extension']['pl'] = "Extension";
+$text['button-invite-user-extension']['sv-se'] = "Extension";
+$text['button-invite-user-extension']['uk'] = "Extension";
+$text['button-invite-user-extension']['de-at'] = "Extension";
+
+$text['button-invite-user-phone']['en-us'] = "Phone Number";
+$text['button-invite-user-phone']['es-cl'] = "Phone Number";
+$text['button-invite-user-phone']['pt-pt'] = "Phone Number";
+$text['button-invite-user-phone']['fr-fr'] = "Phone Number";
+$text['button-invite-user-phone']['pt-br'] = "Phone Number";
+$text['button-invite-user-phone']['pl'] = "Phone Number";
+$text['button-invite-user-phone']['sv-se'] = "Phone Number";
+$text['button-invite-user-phone']['uk'] = "Phone Number";
+$text['button-invite-user-phone']['de-at'] = "Phone Number";
 ?>

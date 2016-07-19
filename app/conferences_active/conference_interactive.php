@@ -41,12 +41,13 @@ else {
 
 //get and prepare the conference name
 	$conference_name = check_str(trim($_REQUEST["c"]));
+	$conference_name_full = $conference_name.'-'.$_SESSION['domain_name'];
 	$conference_display_name = str_replace("-", " ", $conference_name);
 	$conference_display_name = str_replace("_", " ", $conference_display_name);
 
 //show the header
 	require_once "resources/header.php";
-
+	echo "<script src=\"".PROJECT_PATH."/resources/jquery/jquery-ui-1.9.2.min.js\"></script>\n";
 ?><script type="text/javascript">
 function loadXmlHttp(url, id) {
 	var f = this;
@@ -85,7 +86,9 @@ if (this.xmlHttp.readyState == 4 && (this.xmlHttp.status == 200 || !/^http/.test
 var requestTime = function() {
 	var url = 'conference_interactive_inc.php?c=<?php echo trim($_REQUEST["c"]); ?>';
 	new loadXmlHttp(url, 'ajax_reponse');
+	// setInterval(function(){new loadXmlHttp(url, 'ajax_reponse');}, 1222);
 	setInterval(function(){new loadXmlHttp(url, 'ajax_reponse');}, 1222);
+	//initInviteDialog();
 }
 
 if (window.addEventListener) {
@@ -108,14 +111,59 @@ function send_cmd(url) {
 }
 
 var record_count = 0;
+
+function inviteUser(conferenceName) {
+	alert("this is the invite extension:" + conferenceName);
+	var invite_type = $("input[name='invite_type']:checked").val();
+	var invite_number = $("#invite_user_number").val();
+
+	if(invite_number == "") {
+		return;
+	}
+	if(invite_type == "extension") {
+		var command = 'conference_exec.php?cmd=conference&name=' + conferenceName 
+			+ "&data=invite_ext&number=" + invite_number;
+	} else {
+		var command = 'conference_exec.php?cmd=conference&name=' + conferenceName 
+			+ "&data=invite_phone&number=" + invite_number;
+	}
+	send_cmd(command);	
+}
+
+function invitePhone(conferenceName) {
+	alert("this is the invite phone:" + conferenceName);	
+	
+}
+
 </script>
 
 <?php
+
 echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'>\n";
 echo "	<tr>\n";
 echo "	<td align='left'>";
 echo "		<b>".$text['label-interactive']."</b><br><br>\n";
 echo "		".$text['description-interactive']."\n";
+echo "	</td>\n";
+echo "	</tr>\n";
+echo "	<tr>\n";
+echo "	<td align='left'>";
+// $invite_user_ext = '<input class="formfld" type="number" name="invite_user_ext"'
+// 		.'autocomplete="off" maxlength="255" min="0" step="1" value="" style="width: 70px;">';
+// echo $invite_user_ext;
+// $action_invite_user = "	<input type='button' class='btn' title=\"".$text['button-invite-user-title']
+// 		."\" onclick=\"inviteExtension('".$conference_name."');\" value='".$text['button-invite-user']."'>\n";
+// echo "	$action_invite_user";
+
+echo "<input type=\"radio\" name=\"invite_type\" value=\"extension\" checked=\"checked\"/> ".$text['button-invite-user-extension'];
+echo "<input type=\"radio\" name=\"invite_type\" value=\"phone\" /> ".$text['button-invite-user-phone'];
+
+$invite_user_number = '<input class="formfld" type="number" id="invite_user_number"'
+		.'autocomplete="off" maxlength="255" min="0" step="1" value="" style="width: 150px;">';
+echo $invite_user_number;
+$action_invite_user = "	<input type='button' class='btn' title=\"".$text['button-invite-user-title']
+."\" onclick=\"inviteUser('".$conference_name_full."');\" value='".$text['button-invite-user']."'>\n";
+echo "	$action_invite_user";
 echo "	</td>\n";
 echo "	</tr>\n";
 echo "	<tr>\n";
@@ -127,6 +175,10 @@ echo "	</td>";
 echo "	</tr>";
 echo "</table>";
 
+
+
 //show the header
 	require_once "resources/footer.php";
+	
+
 ?>

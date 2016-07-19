@@ -169,6 +169,31 @@ else {
 					elseif ($data == "lock" || $data == "unlock" ) {
 						$switch_result = event_socket_request($fp, 'api '.$switch_cmd);
 					}
+					elseif ($data == "invite_ext" ) {
+						$number = trim(check_str($_GET["number"]));
+						$invite_cmd = 'originate user/'.$number." '&lua(conference-transfer.lua ".$name
+							." ".$_SESSION['domain_name'].")'  inline";
+						$switch_result = event_socket_request($fp, 'api '.$invite_cmd);
+					}
+					elseif ($data == "invite_phone" ) {
+						
+						$sql = "select * from v_gateways ";
+						$sql .= "where domain_uuid = '".$_SESSION['domain_uuid']."' ";
+						$prep_statement = $db->prepare(check_sql($sql));
+						$prep_statement->execute();
+						$result = $prep_statement->fetchAll(PDO::FETCH_NAMED);
+						foreach ($result as &$row) {
+							$gateway_uuid = $row["gateway_uuid"];
+							$gateway_name = $row["username"];
+							break;
+						}
+						unset ($prep_statement);
+						
+						$number = trim(check_str($_GET["number"]));
+						$invite_cmd = 'originate sofia/gateway/'.$gateway_uuid.'/'.$number." '&lua(conference-transfer.lua ".$name
+						." ".$_SESSION['domain_name'].")'  inline";
+						$switch_result = event_socket_request($fp, 'api '.$invite_cmd);
+					}
 					//echo "command: ".$switch_cmd." result: ".$switch_result."<br\n>";
 				}
 		}
