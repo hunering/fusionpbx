@@ -113,7 +113,7 @@ function send_cmd(url) {
 var record_count = 0;
 
 function inviteUser(conferenceName) {
-	alert("this is the invite extension:" + conferenceName);
+	//alert("this is the invite extension:" + conferenceName);
 	var invite_type = $("input[name='invite_type']:checked").val();
 	var invite_number = $("#invite_user_number").val();
 
